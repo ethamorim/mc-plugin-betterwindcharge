@@ -1,0 +1,4 @@
+name: betterwindcharger
+version: '1.0-SNAPSHOT'
+main: com.ethamorim.betterwindcharger.BetterWindChargerPlugin
+api-version: '1.21'
