@@ -7,7 +7,7 @@ public final class BetterWindChargerPlugin extends JavaPlugin {
     @Override
     public void onEnable() {
         // Plugin startup logic
-
+        System.out.println("Wooohoo! My Plugin has started!!");
     }
 
     @Override
