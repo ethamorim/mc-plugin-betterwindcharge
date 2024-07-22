@@ -2,3 +2,8 @@ name: betterwindcharger
 version: '1.0-SNAPSHOT'
 main: com.ethamorim.betterwindcharger.BetterWindChargerPlugin
 api-version: '1.21'
+commands:
+  windcharger:
+    description: "Change the functionality of the Wind Charger"
+    usage: "/windcharger [set] <property> <value>"
+    aliases: [wc]

@@ -1,5 +1,6 @@
 package com.ethamorim.betterwindcharger;
 
+import com.ethamorim.betterwindcharger.command.WindChargerCommand;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.entity.Fireball;
@@ -15,7 +16,17 @@ public final class BetterWindChargerPlugin extends JavaPlugin implements Listene
 
     @Override
     public void onEnable() {
+        getConfig().options().copyDefaults();
+        saveDefaultConfig();
+
+        registerCommands();
+
         Bukkit.getPluginManager().registerEvents(this, this);
+    }
+
+    private void registerCommands() {
+        var wcCommand = getCommand("windcharger");
+        if (wcCommand != null) wcCommand.setExecutor(new WindChargerCommand(this));
     }
 
     @EventHandler
@@ -26,9 +37,14 @@ public final class BetterWindChargerPlugin extends JavaPlugin implements Listene
 
     @EventHandler
     public void onProjectileLaunch(ProjectileLaunchEvent e) {
-        if (e.getEntity() instanceof Fireball windAsFireball) {
-            var velocity = windAsFireball.getVelocity();
-            windAsFireball.setVelocity(new Vector(velocity.getX() / 16, velocity.getY() / 16, velocity.getZ() / 16));
+        if (e.getEntity() instanceof Fireball wc) {
+            var velocity = wc.getVelocity();
+            var factorModifier = getConfig().getDouble("windcharger.velocity-factor");
+            wc.setVelocity(new Vector(
+                    velocity.getX() * factorModifier,
+                    velocity.getY() * factorModifier,
+                    velocity.getZ() * factorModifier
+            ));
         }
 
     }
