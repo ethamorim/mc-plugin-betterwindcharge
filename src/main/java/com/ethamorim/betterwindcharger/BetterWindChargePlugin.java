@@ -50,10 +50,12 @@ public final class BetterWindChargePlugin extends JavaPlugin {
 
     private void registerTrailingParticles() {
         Bukkit.getScheduler().scheduleSyncRepeatingTask(this, () -> {
-            for (UUID id : windChargers.keySet()) {
-                var projectile = windChargers.get(id);
-                var location = projectile.getLocation();
-                projectile.getWorld().spawnParticle(Particle.FIREWORK, location, new Random().nextInt(5));
+            if (JedisInstance.getBoolean(ConfigKeys.PARTICLES.toString())) {
+                for (UUID id : windChargers.keySet()) {
+                    var projectile = windChargers.get(id);
+                    var location = projectile.getLocation();
+                    projectile.getWorld().spawnParticle(Particle.FIREWORK, location, new Random().nextInt(5));
+                }
             }
         }, 0, 1);
     }

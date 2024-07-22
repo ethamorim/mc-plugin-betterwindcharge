@@ -1,6 +1,7 @@
 package com.ethamorim.betterwindcharger.command;
 
 import com.ethamorim.betterwindcharger.jedis.JedisInstance;
+import com.ethamorim.betterwindcharger.util.ConfigKeys;
 import com.ethamorim.betterwindcharger.util.PowerWindCharge;
 import com.ethamorim.betterwindcharger.util.VelocityWindCharge;
 import org.bukkit.ChatColor;
@@ -26,6 +27,8 @@ public class WindChargeCommand implements CommandExecutor {
                     return setWindChargerVelocity(player, value);
                 } else if (property.equals("power")) {
                     return setWindChargerExplosionPower(player, value);
+                } else if (property.equals("trailing_particles")) {
+                    return setWindChargerTrailingParticles(player, value);
                 }
             } else if (operation.equals("give")) {
                 return giveAmount(player, args[1]);
@@ -43,19 +46,19 @@ public class WindChargeCommand implements CommandExecutor {
         String message;
         double modifier;
         if (value.equals(VelocityWindCharge.STATIC.toString())) {
-            message = "Wind Charger's is now static";
+            message = "Wind Charge's is now static";
             modifier = VelocityWindCharge.STATIC.getValue();
         } else if (value.equals(VelocityWindCharge.SLOW.toString())) {
-            message = "Wind Charger's velocity is now slow";
+            message = "Wind Charge's velocity is now slow";
             modifier = VelocityWindCharge.SLOW.getValue();
         } else if (value.equals(VelocityWindCharge.DEFAULT.toString())) {
-            message = "Wind Charger's velocity is back to default";
+            message = "Wind Charge's velocity is back to default";
             modifier = VelocityWindCharge.DEFAULT.getValue();
         } else if (value.equals(VelocityWindCharge.FAST.toString())) {
-            message = "Wind Charger's velocity is now fast";
+            message = "Wind Charge's velocity is now fast";
             modifier = VelocityWindCharge.FAST.getValue();
         } else if (value.equals(VelocityWindCharge.LIGHTNING.toString())) {
-            message = ChatColor.GOLD + "Wind Charger's velocity is now LIGHTNING FAST!!";
+            message = ChatColor.GOLD + "Wind Charge's velocity is now LIGHTNING FAST!!";
             modifier = VelocityWindCharge.LIGHTNING.getValue();
         } else {
             return false;
@@ -69,22 +72,37 @@ public class WindChargeCommand implements CommandExecutor {
         String message;
         float modifier;
         if (value.equals(PowerWindCharge.DEFAULT.toString())) {
-            message = "Wind Charger's explosion power is back to default";
+            message = "Wind Charge's explosion power is back to default";
             modifier = PowerWindCharge.DEFAULT.getValue();
         } else if (value.equals(PowerWindCharge.MEDIUM.toString())) {
-            message = "Wind Charger's explosion power is now medium";
+            message = "Wind Charge's explosion power is now medium";
             modifier = PowerWindCharge.MEDIUM.getValue();
         } else if (value.equals(PowerWindCharge.HIGH.toString())) {
-            message = "Wind Charger's explosion power is now high";
+            message = "Wind Charge's explosion power is now high";
             modifier = PowerWindCharge.HIGH.getValue();
         } else if (value.equals(PowerWindCharge.HUGE.toString())) {
-            message = ChatColor.GOLD + "Wind charger's explosion power is now HUGE!!";
+            message = ChatColor.GOLD + "Wind Charge's explosion power is now HUGE!!";
             modifier = PowerWindCharge.HUGE.getValue();
         } else {
             return false;
         }
         player.sendMessage(message);
         JedisInstance.setValue("explosion-factor", modifier);
+        return true;
+    }
+
+    private boolean setWindChargerTrailingParticles(Player player, String value) {
+        if (!value.equalsIgnoreCase("true") && !value.equalsIgnoreCase("false")) {
+            return false;
+        }
+
+        var bool = Boolean.parseBoolean(value);
+        JedisInstance.setValue(ConfigKeys.PARTICLES.toString(), bool);
+
+        String message = bool
+                ? "Wind Charge's trailing particles is turned on"
+                : "Wind Charge's trailing particles is turned off";
+        player.sendMessage(message);
         return true;
     }
 
