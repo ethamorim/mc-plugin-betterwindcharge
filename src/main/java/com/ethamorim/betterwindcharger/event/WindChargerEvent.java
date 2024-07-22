@@ -1,6 +1,7 @@
 package com.ethamorim.betterwindcharger.event;
 
 import com.ethamorim.betterwindcharger.BetterWindChargerPlugin;
+import com.ethamorim.betterwindcharger.jedis.JedisInstance;
 import org.bukkit.Material;
 import org.bukkit.entity.*;
 import org.bukkit.event.EventHandler;
@@ -33,7 +34,7 @@ public class WindChargerEvent implements Listener {
     public void onProjectileLaunch(ProjectileLaunchEvent e) {
         if (e.getEntity() instanceof Fireball wc) {
             var velocity = wc.getVelocity();
-            var factorModifier = main.getConfig().getDouble("windcharger.velocity-factor");
+            var factorModifier = JedisInstance.getDouble("velocity-factor");
             wc.setVelocity(new Vector(
                     velocity.getX() * factorModifier,
                     velocity.getY() * factorModifier,
@@ -46,9 +47,10 @@ public class WindChargerEvent implements Listener {
     public void onProjectileHit(ProjectileHitEvent e) {
         if (e.getEntity() instanceof WindCharge wc) {
             var location = wc.getLocation();
+            var factorModifier = JedisInstance.getFloat("explosion-factor");
             wc.getWorld().createExplosion(
                     location,
-                    wc.getYield() * 100,
+                    wc.getYield() * factorModifier,
                     false,
                     false,
                     wc
