@@ -3,7 +3,7 @@ package com.ethamorim.betterwindcharger.key;
 public enum ConfigKeys {
     VELOCITY_FACTOR("velocity-factor"),
     EXPLOSION_FACTOR("explosion-factor"),
-    PARTICLES("particles");
+    TRAILING_PARTICLES("trailing_particles");
 
     private final String description;
 

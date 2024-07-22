@@ -97,7 +97,7 @@ public class WindChargeCommand implements CommandExecutor {
         }
 
         var bool = Boolean.parseBoolean(value);
-        JedisInstance.setValue(ConfigKeys.PARTICLES.toString(), bool);
+        JedisInstance.setValue(ConfigKeys.TRAILING_PARTICLES.toString(), bool);
 
         String message = bool
                 ? "Wind Charge's trailing particles is turned on"

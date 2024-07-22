@@ -29,12 +29,17 @@ public final class BetterWindChargePlugin extends JavaPlugin {
                 ConfigKeys.EXPLOSION_FACTOR.toString(),
                 PowerWindCharge.DEFAULT.getValue());
         JedisInstance.setValue(
-                ConfigKeys.PARTICLES.toString(),
+                ConfigKeys.TRAILING_PARTICLES.toString(),
                 false);
 
         registerCommands();
         registerEvents();
         registerTrailingParticles();
+    }
+
+    @Override
+    public void onDisable() {
+        Bukkit.getScheduler().cancelTasks(this);
     }
 
     private void registerCommands() {
@@ -50,7 +55,7 @@ public final class BetterWindChargePlugin extends JavaPlugin {
 
     private void registerTrailingParticles() {
         Bukkit.getScheduler().scheduleSyncRepeatingTask(this, () -> {
-            if (JedisInstance.getBoolean(ConfigKeys.PARTICLES.toString())) {
+            if (JedisInstance.getBoolean(ConfigKeys.TRAILING_PARTICLES.toString())) {
                 for (UUID id : windChargers.keySet()) {
                     var projectile = windChargers.get(id);
                     var location = projectile.getLocation();
