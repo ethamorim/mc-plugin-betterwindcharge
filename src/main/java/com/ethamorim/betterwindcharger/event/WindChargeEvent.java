@@ -1,9 +1,9 @@
 package com.ethamorim.betterwindcharger.event;
 
-import com.ethamorim.betterwindcharger.BetterWindChargerPlugin;
+import com.ethamorim.betterwindcharger.BetterWindChargePlugin;
 import com.ethamorim.betterwindcharger.jedis.JedisInstance;
 import com.ethamorim.betterwindcharger.util.ConfigKeys;
-import com.ethamorim.betterwindcharger.util.PowerWindCharger;
+import com.ethamorim.betterwindcharger.util.PowerWindCharge;
 import org.bukkit.Material;
 import org.bukkit.Particle;
 import org.bukkit.entity.*;
@@ -18,11 +18,11 @@ import org.bukkit.util.Vector;
 
 import java.util.Random;
 
-public class WindChargerEvent implements Listener {
+public class WindChargeEvent implements Listener {
 
-    BetterWindChargerPlugin main;
+    BetterWindChargePlugin main;
 
-    public WindChargerEvent(BetterWindChargerPlugin main) {
+    public WindChargeEvent(BetterWindChargePlugin main) {
         this.main = main;
     }
 
@@ -34,7 +34,10 @@ public class WindChargerEvent implements Listener {
 
     @EventHandler
     public void onProjectileLaunch(ProjectileLaunchEvent e) {
-        if (e.getEntity() instanceof Fireball wc) {
+        if (e.getEntity() instanceof WindCharge) {
+            Fireball wc = (Fireball) e.getEntity();
+            main.addProjectile(wc);
+
             var velocity = wc.getVelocity();
             var factorModifier = JedisInstance.getDouble(ConfigKeys.VELOCITY_FACTOR.toString());
             wc.setVelocity(new Vector(
@@ -48,6 +51,8 @@ public class WindChargerEvent implements Listener {
     @EventHandler
     public void onProjectileHit(ProjectileHitEvent e) {
         if (e.getEntity() instanceof WindCharge wc) {
+            main.removeProjectile(wc.getUniqueId());
+
             var location = wc.getLocation();
             var factorModifier = JedisInstance.getFloat(ConfigKeys.EXPLOSION_FACTOR.toString());
             wc.setYield(factorModifier);
@@ -62,7 +67,7 @@ public class WindChargerEvent implements Listener {
             );
 
             var random = new Random();
-            if (factorModifier == PowerWindCharger.MEDIUM.getValue()) {
+            if (factorModifier == PowerWindCharge.MEDIUM.getValue()) {
                 world.spawnParticle(
                         Particle.GUST,
                         location,
@@ -71,7 +76,7 @@ public class WindChargerEvent implements Listener {
                         random.nextInt(2),
                         random.nextInt(2)
                 );
-            } else if (factorModifier == PowerWindCharger.HIGH.getValue()) {
+            } else if (factorModifier == PowerWindCharge.HIGH.getValue()) {
                 world.spawnParticle(
                         Particle.EXPLOSION,
                         location,
@@ -80,7 +85,7 @@ public class WindChargerEvent implements Listener {
                         random.nextInt(5),
                         random.nextInt(5)
                 );
-            } else if (factorModifier == PowerWindCharger.HUGE.getValue()) {
+            } else if (factorModifier == PowerWindCharge.HUGE.getValue()) {
                 world.spawnParticle(
                         Particle.EXPLOSION_EMITTER,
                         location,
@@ -95,7 +100,10 @@ public class WindChargerEvent implements Listener {
 
     @EventHandler
     public void onEntityDamage(EntityDamageEvent e) {
-        if (e.getEntity() instanceof Player && e.getCause().equals(EntityDamageEvent.DamageCause.ENTITY_EXPLOSION)) {
+        if (
+                e.getEntity() instanceof Player &&
+                e.getCause().equals(EntityDamageEvent.DamageCause.ENTITY_EXPLOSION) &&
+                e.getDamageSource().getCausingEntity() instanceof WindCharge) {
             e.setDamage(0);
         }
     }

@@ -1,15 +1,15 @@
 package com.ethamorim.betterwindcharger.command;
 
 import com.ethamorim.betterwindcharger.jedis.JedisInstance;
-import com.ethamorim.betterwindcharger.util.PowerWindCharger;
-import com.ethamorim.betterwindcharger.util.VelocityWindCharger;
+import com.ethamorim.betterwindcharger.util.PowerWindCharge;
+import com.ethamorim.betterwindcharger.util.VelocityWindCharge;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.command.*;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
-public class WindChargerCommand implements CommandExecutor {
+public class WindChargeCommand implements CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String s, String[] args) {
@@ -42,21 +42,21 @@ public class WindChargerCommand implements CommandExecutor {
     private boolean setWindChargerVelocity(Player player, String value) {
         String message;
         double modifier;
-        if (value.equals(VelocityWindCharger.STATIC.toString())) {
+        if (value.equals(VelocityWindCharge.STATIC.toString())) {
             message = "Wind Charger's is now static";
-            modifier = VelocityWindCharger.STATIC.getValue();
-        } else if (value.equals(VelocityWindCharger.SLOW.toString())) {
+            modifier = VelocityWindCharge.STATIC.getValue();
+        } else if (value.equals(VelocityWindCharge.SLOW.toString())) {
             message = "Wind Charger's velocity is now slow";
-            modifier = VelocityWindCharger.SLOW.getValue();
-        } else if (value.equals(VelocityWindCharger.DEFAULT.toString())) {
+            modifier = VelocityWindCharge.SLOW.getValue();
+        } else if (value.equals(VelocityWindCharge.DEFAULT.toString())) {
             message = "Wind Charger's velocity is back to default";
-            modifier = VelocityWindCharger.DEFAULT.getValue();
-        } else if (value.equals(VelocityWindCharger.FAST.toString())) {
+            modifier = VelocityWindCharge.DEFAULT.getValue();
+        } else if (value.equals(VelocityWindCharge.FAST.toString())) {
             message = "Wind Charger's velocity is now fast";
-            modifier = VelocityWindCharger.FAST.getValue();
-        } else if (value.equals(VelocityWindCharger.LIGHTNING.toString())) {
+            modifier = VelocityWindCharge.FAST.getValue();
+        } else if (value.equals(VelocityWindCharge.LIGHTNING.toString())) {
             message = ChatColor.GOLD + "Wind Charger's velocity is now LIGHTNING FAST!!";
-            modifier = VelocityWindCharger.LIGHTNING.getValue();
+            modifier = VelocityWindCharge.LIGHTNING.getValue();
         } else {
             return false;
         }
@@ -68,18 +68,18 @@ public class WindChargerCommand implements CommandExecutor {
     private boolean setWindChargerExplosionPower(Player player, String value) {
         String message;
         float modifier;
-        if (value.equals(PowerWindCharger.DEFAULT.toString())) {
+        if (value.equals(PowerWindCharge.DEFAULT.toString())) {
             message = "Wind Charger's explosion power is back to default";
-            modifier = PowerWindCharger.DEFAULT.getValue();
-        } else if (value.equals(PowerWindCharger.MEDIUM.toString())) {
+            modifier = PowerWindCharge.DEFAULT.getValue();
+        } else if (value.equals(PowerWindCharge.MEDIUM.toString())) {
             message = "Wind Charger's explosion power is now medium";
-            modifier = PowerWindCharger.MEDIUM.getValue();
-        } else if (value.equals(PowerWindCharger.HIGH.toString())) {
+            modifier = PowerWindCharge.MEDIUM.getValue();
+        } else if (value.equals(PowerWindCharge.HIGH.toString())) {
             message = "Wind Charger's explosion power is now high";
-            modifier = PowerWindCharger.HIGH.getValue();
-        } else if (value.equals(PowerWindCharger.HUGE.toString())) {
+            modifier = PowerWindCharge.HIGH.getValue();
+        } else if (value.equals(PowerWindCharge.HUGE.toString())) {
             message = ChatColor.GOLD + "Wind charger's explosion power is now HUGE!!";
-            modifier = PowerWindCharger.HUGE.getValue();
+            modifier = PowerWindCharge.HUGE.getValue();
         } else {
             return false;
         }

@@ -1,6 +1,6 @@
 package com.ethamorim.betterwindcharger.util;
 
-public enum PowerWindCharger {
+public enum PowerWindCharge {
 
     DEFAULT("default", 0.0f),
     MEDIUM("medium", 0.05f),
@@ -10,7 +10,7 @@ public enum PowerWindCharger {
     private final String description;
     private final float value;
 
-    PowerWindCharger(String description, float value) {
+    PowerWindCharge(String description, float value) {
         this.description = description;
         this.value = value;
     }

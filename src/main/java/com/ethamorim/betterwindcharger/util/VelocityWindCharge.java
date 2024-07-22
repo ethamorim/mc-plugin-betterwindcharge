@@ -1,6 +1,6 @@
 package com.ethamorim.betterwindcharger.util;
 
-public enum VelocityWindCharger {
+public enum VelocityWindCharge {
     STATIC("static", 0.0),
     SLOW("slow", 0.05),
     DEFAULT("default", 1.0),
@@ -10,7 +10,7 @@ public enum VelocityWindCharger {
     private final String description;
     private final double value;
 
-    VelocityWindCharger(String description, double value) {
+    VelocityWindCharge(String description, double value) {
         this.description = description;
         this.value = value;
     }
