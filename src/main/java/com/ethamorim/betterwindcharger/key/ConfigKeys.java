@@ -1,4 +1,4 @@
-package com.ethamorim.betterwindcharger.util;
+package com.ethamorim.betterwindcharger.key;
 
 public enum ConfigKeys {
     VELOCITY_FACTOR("velocity-factor"),

@@ -2,8 +2,8 @@ package com.ethamorim.betterwindcharger.event;
 
 import com.ethamorim.betterwindcharger.BetterWindChargePlugin;
 import com.ethamorim.betterwindcharger.jedis.JedisInstance;
-import com.ethamorim.betterwindcharger.util.ConfigKeys;
-import com.ethamorim.betterwindcharger.util.PowerWindCharge;
+import com.ethamorim.betterwindcharger.key.ConfigKeys;
+import com.ethamorim.betterwindcharger.key.PowerWindCharge;
 import org.bukkit.Material;
 import org.bukkit.Particle;
 import org.bukkit.entity.*;
