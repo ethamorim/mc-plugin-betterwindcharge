@@ -1,4 +1,4 @@
-package com.ethamorim.betterwindcharger.jedis;
+package com.ethamorim.pluginenxtest.jedis;
 
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;

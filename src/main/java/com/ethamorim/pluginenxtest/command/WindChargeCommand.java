@@ -1,9 +1,9 @@
-package com.ethamorim.betterwindcharger.command;
+package com.ethamorim.pluginenxtest.command;
 
-import com.ethamorim.betterwindcharger.jedis.JedisInstance;
-import com.ethamorim.betterwindcharger.key.ConfigKeys;
-import com.ethamorim.betterwindcharger.key.PowerWindCharge;
-import com.ethamorim.betterwindcharger.key.VelocityWindCharge;
+import com.ethamorim.pluginenxtest.jedis.JedisInstance;
+import com.ethamorim.pluginenxtest.key.ConfigKeys;
+import com.ethamorim.pluginenxtest.key.PowerWindCharge;
+import com.ethamorim.pluginenxtest.key.VelocityWindCharge;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.command.*;

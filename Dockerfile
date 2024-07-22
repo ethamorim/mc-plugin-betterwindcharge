@@ -5,7 +5,7 @@ RUN gradle shadowJar
 
 FROM bellsoft/liberica-openjre-debian:21-cds AS PROD
 
-ENV ARTIFACT_NAME=enx-plugin-betterwindcharger-1.0-SNAPSHOT-all.jar
+ENV ARTIFACT_NAME=pluginenxtest-1.0-SNAPSHOT-all.jar
 ENV APP_HOME=/usr/app
 
 WORKDIR $APP_HOME

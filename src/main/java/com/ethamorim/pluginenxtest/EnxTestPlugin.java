@@ -1,11 +1,11 @@
-package com.ethamorim.betterwindcharger;
+package com.ethamorim.pluginenxtest;
 
-import com.ethamorim.betterwindcharger.command.WindChargeCommand;
-import com.ethamorim.betterwindcharger.event.WindChargeEvent;
-import com.ethamorim.betterwindcharger.jedis.JedisInstance;
-import com.ethamorim.betterwindcharger.key.ConfigKeys;
-import com.ethamorim.betterwindcharger.key.PowerWindCharge;
-import com.ethamorim.betterwindcharger.key.VelocityWindCharge;
+import com.ethamorim.pluginenxtest.command.WindChargeCommand;
+import com.ethamorim.pluginenxtest.event.WindChargeEvent;
+import com.ethamorim.pluginenxtest.jedis.JedisInstance;
+import com.ethamorim.pluginenxtest.key.ConfigKeys;
+import com.ethamorim.pluginenxtest.key.PowerWindCharge;
+import com.ethamorim.pluginenxtest.key.VelocityWindCharge;
 import org.bukkit.Bukkit;
 import org.bukkit.Particle;
 import org.bukkit.entity.Projectile;
@@ -15,7 +15,7 @@ import java.util.HashMap;
 import java.util.Random;
 import java.util.UUID;
 
-public final class BetterWindChargePlugin extends JavaPlugin {
+public final class EnxTestPlugin extends JavaPlugin {
 
     private final HashMap<UUID, Projectile> windChargers = new HashMap<>();
 

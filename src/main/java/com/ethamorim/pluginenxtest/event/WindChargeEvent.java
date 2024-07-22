@@ -1,16 +1,15 @@
-package com.ethamorim.betterwindcharger.event;
+package com.ethamorim.pluginenxtest.event;
 
-import com.ethamorim.betterwindcharger.BetterWindChargePlugin;
-import com.ethamorim.betterwindcharger.jedis.JedisInstance;
-import com.ethamorim.betterwindcharger.key.ConfigKeys;
-import com.ethamorim.betterwindcharger.key.PowerWindCharge;
+import com.ethamorim.pluginenxtest.EnxTestPlugin;
+import com.ethamorim.pluginenxtest.jedis.JedisInstance;
+import com.ethamorim.pluginenxtest.key.ConfigKeys;
+import com.ethamorim.pluginenxtest.key.PowerWindCharge;
 import org.bukkit.Material;
 import org.bukkit.Particle;
 import org.bukkit.entity.*;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageEvent;
-import org.bukkit.event.entity.EntityExplodeEvent;
 import org.bukkit.event.entity.ProjectileHitEvent;
 import org.bukkit.event.entity.ProjectileLaunchEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
@@ -21,9 +20,9 @@ import java.util.Random;
 
 public class WindChargeEvent implements Listener {
 
-    BetterWindChargePlugin main;
+    EnxTestPlugin main;
 
-    public WindChargeEvent(BetterWindChargePlugin main) {
+    public WindChargeEvent(EnxTestPlugin main) {
         this.main = main;
     }
 

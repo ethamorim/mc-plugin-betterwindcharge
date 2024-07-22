@@ -1,6 +1,6 @@
-name: betterwindcharger
+name: pluginenxtest
 version: '1.0-SNAPSHOT'
-main: com.ethamorim.betterwindcharger.BetterWindChargePlugin
+main: com.ethamorim.pluginenxtest.EnxTestPlugin
 api-version: '1.21'
 commands:
   windcharger:

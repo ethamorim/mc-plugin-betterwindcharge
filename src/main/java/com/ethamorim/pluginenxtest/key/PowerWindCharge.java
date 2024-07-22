@@ -1,4 +1,4 @@
-package com.ethamorim.betterwindcharger.key;
+package com.ethamorim.pluginenxtest.key;
 
 public enum PowerWindCharge {
 
