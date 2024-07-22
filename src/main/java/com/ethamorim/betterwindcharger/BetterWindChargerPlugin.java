@@ -3,19 +3,26 @@ package com.ethamorim.betterwindcharger;
 import com.ethamorim.betterwindcharger.command.WindChargerCommand;
 import com.ethamorim.betterwindcharger.event.WindChargerEvent;
 import com.ethamorim.betterwindcharger.jedis.JedisInstance;
+import com.ethamorim.betterwindcharger.util.ConfigKeys;
+import com.ethamorim.betterwindcharger.util.PowerWindCharger;
+import com.ethamorim.betterwindcharger.util.VelocityWindCharger;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
-import redis.clients.jedis.Jedis;
-import redis.clients.jedis.JedisPool;
 
 public final class BetterWindChargerPlugin extends JavaPlugin {
 
     @Override
     public void onEnable() {
         JedisInstance.connect();
-        JedisInstance.setValue("velocity-factor", 1.0);
-        JedisInstance.setValue("explosion-factor", 1.0f);
-        JedisInstance.setValue("animation", false);
+        JedisInstance.setValue(
+                ConfigKeys.VELOCITY_FACTOR.toString(),
+                VelocityWindCharger.DEFAULT.getValue());
+        JedisInstance.setValue(
+                ConfigKeys.EXPLOSION_FACTOR.toString(),
+                PowerWindCharger.DEFAULT.getValue());
+        JedisInstance.setValue(
+                ConfigKeys.ANIMATION.toString(),
+                false);
 
         registerCommands();
         registerEvents();
@@ -23,7 +30,9 @@ public final class BetterWindChargerPlugin extends JavaPlugin {
 
     private void registerCommands() {
         var wcCommand = getCommand("windcharger");
-        if (wcCommand != null) wcCommand.setExecutor(new WindChargerCommand());
+        if (wcCommand != null) {
+            wcCommand.setExecutor(new WindChargerCommand());
+        }
     }
 
     private void registerEvents() {
