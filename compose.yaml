@@ -11,6 +11,7 @@ services:
   server:
     build:
       context: .
+      target: PROD
     ports:
       - 25565:25565
 

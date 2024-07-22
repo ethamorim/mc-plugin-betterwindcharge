@@ -4,7 +4,7 @@ COPY . .
 RUN gradle build
 RUN gradle jar
 
-FROM bellsoft/liberica-openjre-debian:21-cds
+FROM bellsoft/liberica-openjre-debian:21-cds AS PROD
 
 ENV ARTIFACT_NAME=enx-plugin-betterwindcharger-1.0-SNAPSHOT.jar
 ENV APP_HOME=/usr/app
