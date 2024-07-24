@@ -4,7 +4,6 @@ import com.ethamorim.pluginenxtest.EnxTestPlugin;
 import com.ethamorim.pluginenxtest.jedis.JedisInstance;
 import com.ethamorim.pluginenxtest.key.ConfigKeys;
 import com.ethamorim.pluginenxtest.key.PowerWindCharge;
-import org.bukkit.Material;
 import org.bukkit.Particle;
 import org.bukkit.entity.*;
 import org.bukkit.event.EventHandler;
@@ -12,12 +11,15 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.ProjectileHitEvent;
 import org.bukkit.event.entity.ProjectileLaunchEvent;
-import org.bukkit.event.player.PlayerJoinEvent;
-import org.bukkit.inventory.ItemStack;
 import org.bukkit.util.Vector;
-
 import java.util.Random;
 
+/**
+ * Classe de eventos do plugin, necessária para
+ * modificação do comportamento do projétil do Wind Charge.
+ *
+ * @author ethamorim
+ */
 public class WindChargeEvent implements Listener {
 
     EnxTestPlugin main;

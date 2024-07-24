@@ -1,5 +1,10 @@
 package com.ethamorim.pluginenxtest.key;
 
+/**
+ * Enum para centralização dos fatores de modificação da velocidade.
+ *
+ * @author ethamorim
+ */
 public enum VelocityWindCharge {
     STATIC("static", 0.0),
     SLOW("slow", 0.05),

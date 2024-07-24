@@ -10,11 +10,15 @@ import org.bukkit.Bukkit;
 import org.bukkit.Particle;
 import org.bukkit.entity.Projectile;
 import org.bukkit.plugin.java.JavaPlugin;
-
 import java.util.HashMap;
 import java.util.Random;
 import java.util.UUID;
 
+/**
+ * Classe principal do plugin.
+ *
+ * @author ethamorim
+ */
 public final class EnxTestPlugin extends JavaPlugin {
 
     private final HashMap<UUID, Projectile> windCharges = new HashMap<>();

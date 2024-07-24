@@ -1,5 +1,10 @@
 package com.ethamorim.pluginenxtest.key;
 
+/**
+ * Enum para centralização das propriedades de configuração.
+ *
+ * @author ethamorim
+ */
 public enum ConfigKeys {
     VELOCITY_FACTOR("velocity-factor"),
     EXPLOSION_FACTOR("explosion-factor"),

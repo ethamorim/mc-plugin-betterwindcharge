@@ -3,6 +3,11 @@ package com.ethamorim.pluginenxtest.jedis;
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
 
+/**
+ * Classe utilitária para auxilio no uso da biblioteca Jedis.
+ *
+ * @author ethamorim
+ */
 public class JedisInstance {
 
     private static Jedis jedis;

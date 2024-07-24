@@ -10,6 +10,12 @@ import org.bukkit.command.*;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
+/**
+ * Classe para registro do comando para alteração do comportamento do Wind Charge.
+ * Modifica os valores das configurações, que por sua vez são utilizados nos eventos.
+ *
+ * @author ethamorim
+ */
 public class WindChargeCommand implements CommandExecutor {
 
     @Override

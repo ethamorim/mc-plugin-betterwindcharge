@@ -1,5 +1,10 @@
 package com.ethamorim.pluginenxtest.key;
 
+/**
+ * Enum para centralização dos valores da configuração de potência de explosão.
+ *
+ * @author ethamorim
+ */
 public enum PowerWindCharge {
 
     DEFAULT("default", 0.0f),
