@@ -1,9 +1,9 @@
-FROM gradle:8.9.0-jdk21-jammy AS BUILD
+FROM gradle:8.9.0-jdk21-jammy AS build
 WORKDIR /usr/app
 COPY . .
 RUN gradle shadowJar
 
-FROM bellsoft/liberica-openjre-debian:21-cds AS PROD
+FROM bellsoft/liberica-openjre-debian:21-cds AS prod
 
 ENV ARTIFACT_NAME=pluginenxtest-1.0-SNAPSHOT-all.jar
 ENV APP_HOME=/usr/app

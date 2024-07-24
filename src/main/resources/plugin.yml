@@ -3,7 +3,7 @@ version: '1.0-SNAPSHOT'
 main: com.ethamorim.pluginenxtest.EnxTestPlugin
 api-version: '1.21'
 commands:
-  windcharger:
-    description: "Change the functionality of the Wind Charger"
-    usage: "/windcharger [set|give] <property> <value>"
+  windcharge:
+    description: "Change the functionality of the Wind Charge"
+    usage: "/windcharge [set|give] <property> <value>"
     aliases: [wc]

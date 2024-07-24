@@ -17,7 +17,7 @@ import java.util.UUID;
 
 public final class EnxTestPlugin extends JavaPlugin {
 
-    private final HashMap<UUID, Projectile> windChargers = new HashMap<>();
+    private final HashMap<UUID, Projectile> windCharges = new HashMap<>();
 
     @Override
     public void onEnable() {
@@ -43,7 +43,7 @@ public final class EnxTestPlugin extends JavaPlugin {
     }
 
     private void registerCommands() {
-        var wcCommand = getCommand("windcharger");
+        var wcCommand = getCommand("windcharge");
         if (wcCommand != null) {
             wcCommand.setExecutor(new WindChargeCommand());
         }
@@ -56,8 +56,8 @@ public final class EnxTestPlugin extends JavaPlugin {
     private void registerTrailingParticles() {
         Bukkit.getScheduler().scheduleSyncRepeatingTask(this, () -> {
             if (JedisInstance.getBoolean(ConfigKeys.TRAILING_PARTICLES.toString())) {
-                for (UUID id : windChargers.keySet()) {
-                    var projectile = windChargers.get(id);
+                for (UUID id : windCharges.keySet()) {
+                    var projectile = windCharges.get(id);
                     var location = projectile.getLocation();
                     projectile.getWorld().spawnParticle(Particle.FIREWORK, location, new Random().nextInt(5));
                 }
@@ -66,10 +66,10 @@ public final class EnxTestPlugin extends JavaPlugin {
     }
 
     public void addProjectile(Projectile projectile) {
-        windChargers.put(projectile.getUniqueId(), projectile);
+        windCharges.put(projectile.getUniqueId(), projectile);
     }
 
     public void removeProjectile(UUID uuid) {
-        windChargers.remove(uuid);
+        windCharges.remove(uuid);
     }
 }

@@ -10,7 +10,7 @@ public class JedisInstance {
     private JedisInstance() {}
 
     public static void connect() {
-        try (JedisPool jedisPool = new JedisPool("172.22.0.2", 6379)) {
+        try (JedisPool jedisPool = new JedisPool("bwc-redis", 6379)) {
             jedis = jedisPool.getResource();
         }
     }

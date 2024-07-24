@@ -1,4 +1,4 @@
-windcharger:
+windcharge:
   velocity-factor: 1.0
   explosion-factor: 1.0
   particles: false

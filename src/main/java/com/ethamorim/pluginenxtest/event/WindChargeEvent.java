@@ -27,12 +27,6 @@ public class WindChargeEvent implements Listener {
     }
 
     @EventHandler
-    public void onPlayerJoin(PlayerJoinEvent e) {
-        var windCharger = new ItemStack(Material.WIND_CHARGE, 64);
-        e.getPlayer().getInventory().addItem(windCharger);
-    }
-
-    @EventHandler
     public void onProjectileLaunch(ProjectileLaunchEvent e) {
         if (e.getEntity() instanceof WindCharge) {
             Fireball wc = (Fireball) e.getEntity();

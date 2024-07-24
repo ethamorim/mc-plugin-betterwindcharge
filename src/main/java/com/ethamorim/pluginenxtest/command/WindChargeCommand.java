@@ -24,11 +24,11 @@ public class WindChargeCommand implements CommandExecutor {
                 var property = args[1];
                 var value = args[2];
                 if (property.equals("velocity")) {
-                    return setWindChargerVelocity(player, value);
+                    return setWindChargeVelocity(player, value);
                 } else if (property.equals("power")) {
-                    return setWindChargerExplosionPower(player, value);
+                    return setWindChargeExplosionPower(player, value);
                 } else if (property.equals("trailing_particles")) {
-                    return setWindChargerTrailingParticles(player, value);
+                    return setWindChargeTrailingParticles(player, value);
                 }
             } else if (operation.equals("give")) {
                 return giveAmount(player, args[1]);
@@ -42,7 +42,7 @@ public class WindChargeCommand implements CommandExecutor {
         }
     }
 
-    private boolean setWindChargerVelocity(Player player, String value) {
+    private boolean setWindChargeVelocity(Player player, String value) {
         String message;
         double modifier;
         if (value.equals(VelocityWindCharge.STATIC.toString())) {
@@ -68,7 +68,7 @@ public class WindChargeCommand implements CommandExecutor {
         return true;
     }
 
-    private boolean setWindChargerExplosionPower(Player player, String value) {
+    private boolean setWindChargeExplosionPower(Player player, String value) {
         String message;
         float modifier;
         if (value.equals(PowerWindCharge.DEFAULT.toString())) {
@@ -91,7 +91,7 @@ public class WindChargeCommand implements CommandExecutor {
         return true;
     }
 
-    private boolean setWindChargerTrailingParticles(Player player, String value) {
+    private boolean setWindChargeTrailingParticles(Player player, String value) {
         if (!value.equalsIgnoreCase("true") && !value.equalsIgnoreCase("false")) {
             return false;
         }
