@@ -75,18 +75,18 @@ public class WindChargeEvent implements Listener {
                         Particle.EXPLOSION,
                         location,
                         random.nextInt(5),
-                        random.nextInt(5),
-                        random.nextInt(5),
-                        random.nextInt(5)
+                        random.nextInt(2),
+                        random.nextInt(2),
+                        random.nextInt(2)
                 );
             } else if (factorModifier == PowerWindCharge.HUGE.getValue()) {
                 world.spawnParticle(
                         Particle.EXPLOSION_EMITTER,
                         location,
                         random.nextInt(10),
-                        random.nextInt(10),
-                        random.nextInt(10),
-                        random.nextInt(10)
+                        random.nextInt(5),
+                        random.nextInt(5),
+                        random.nextInt(5)
                 );
             }
         }
@@ -96,8 +96,7 @@ public class WindChargeEvent implements Listener {
     public void onEntityDamage(EntityDamageEvent e) {
         if (
                 e.getEntity() instanceof Player &&
-                e.getCause().equals(EntityDamageEvent.DamageCause.ENTITY_EXPLOSION) &&
-                e.getDamageSource().getCausingEntity() instanceof WindCharge) {
+                e.getCause().equals(EntityDamageEvent.DamageCause.ENTITY_EXPLOSION)) {
             e.setDamage(0);
         }
     }
